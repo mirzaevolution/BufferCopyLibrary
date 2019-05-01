@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BufferItem.cs" />
     <Compile Include="FileBufferCopy.cs" />
     <Compile Include="GeneralBufferCopy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

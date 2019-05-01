@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BufferCopyCore
 {
     public class GeneralBufferCopy
     {
-        public void CopyFileWithBuffer(byte[] sourceBuffer, long bufferSize, Action<byte[]> saveCallback, bool logging = false)
+        public void CopyFileWithBuffer<T>(byte[] sourceBuffer, long bufferSize, Action<BufferItem> saveCallback, bool logging = false)
         {
             try
             {
@@ -17,17 +18,20 @@ namespace BufferCopyCore
                 int index = 0;
                 do
                 {
+                    BufferItem bufferItem = new BufferItem();
                     byte[] buffer = new byte[bufferSize];
                     int currentIndex = 0;
                     for (; index < bytesRead; index++)
                     {
                         buffer[currentIndex++] = sourceBuffer[index];
+                        
                     }
                     if (logging)
                         Console.Write($"[*] Copying buffer {bytesRead} ...........");
                     try
                     {
-                        saveCallback?.Invoke(buffer);
+                        bufferItem.Id = Guid.NewGuid().ToString("n");
+                        saveCallback?.Invoke(bufferItem);
                         if (logging)
                             Console.WriteLine(" [OK]");
                     }
