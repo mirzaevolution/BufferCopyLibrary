@@ -4,7 +4,7 @@ namespace BufferCopyCore
 {
     public class FileBufferCopy
     {
-        public void CopyFileWithBuffer(byte[] sourceBuffer, long bufferSize, string newFileName, bool logging = false)
+        public void CopyData(byte[] sourceBuffer, long bufferSize, string newFileName, bool logging = false)
         {
             try
             {

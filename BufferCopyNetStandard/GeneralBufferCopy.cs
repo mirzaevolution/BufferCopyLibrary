@@ -5,7 +5,7 @@ namespace BufferCopyNetStandard
 {
     public class GeneralBufferCopy
     {
-        public void CopyFileWithBuffer<T>(byte[] sourceBuffer, long bufferSize, Action<BufferItem> saveCallback, bool logging = false)
+        public void CopyData(byte[] sourceBuffer, long bufferSize, Action<BufferItem> saveCallback, bool logging = false)
         {
             try
             {
