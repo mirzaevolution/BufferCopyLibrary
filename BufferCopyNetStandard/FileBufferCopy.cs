@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Diagnostics;
 namespace BufferCopyNetStandard
 {
     public class FileBufferCopy
@@ -24,7 +25,12 @@ namespace BufferCopyNetStandard
                         buffer[currentIndex++] = sourceBuffer[index];
                     }
                     if (logging)
-                        Console.Write($"[*] Copying buffer {bytesRead} ...........");
+                    {
+                        //-- Uncomment this to log to console
+                        //Console.Write($"[*] Copying buffer {bytesRead} ...........");
+
+                        Trace.Write($"[*] Copying buffer {bytesRead} ..........."); 
+                    }
                     try
                     {
                         using (FileStream fs = new FileStream(newFileName, FileMode.Append, FileAccess.Write))
@@ -33,12 +39,22 @@ namespace BufferCopyNetStandard
                             fs.Close();
                         }
                         if (logging)
-                            Console.WriteLine(" [OK]");
+                        {
+                            //-- Uncomment this to log to console
+                            //Console.WriteLine(" [OK]");
+
+                            Trace.WriteLine(" [OK]");
+                        }
                     }
                     catch (Exception ex)
                     {
                         if (logging)
-                            Console.WriteLine(" [ERROR]");
+                        {
+                            //-- Uncomment this to log to console
+                            //Console.WriteLine(" [OK]");
+
+                            Trace.WriteLine(" [ERROR]");
+                        }
 
                         throw ex;
                     }
@@ -56,10 +72,15 @@ namespace BufferCopyNetStandard
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                //-- Uncomment this to log to console
+                //Console.WriteLine(ex);
+
+                Trace.WriteLine(ex);
+
+                throw ex;
             }
         }
-        public void CopyFileWithBuffer(string sourceFileName, long bufferSize, string newFileName, bool logging = false)
+        public void CopyData(string sourceFileName, long bufferSize, string newFileName, bool logging = false)
         {
             try
             {
@@ -96,7 +117,12 @@ namespace BufferCopyNetStandard
                             buffer[currentIndex++] = sourceBuffer[index];
                         }
                         if (logging)
-                            Console.Write($"[*] Copying buffer {bytesRead} ...........");
+                        {
+                            //-- Uncomment this to log to console
+                            //Console.Write($"[*] Copying buffer {bytesRead} ...........");
+
+                            Trace.Write($"[*] Copying buffer {bytesRead} ...........");
+                        }
                         try
                         {
                             using (FileStream fs = new FileStream(newFileName, FileMode.Append, FileAccess.Write))
@@ -105,12 +131,22 @@ namespace BufferCopyNetStandard
                                 fs.Close();
                             }
                             if (logging)
-                                Console.WriteLine(" [OK]");
+                            {
+                                //-- Uncomment this to log to console
+                                //Console.WriteLine(" [OK]");
+
+                                Trace.WriteLine(" [OK]");
+                            }
                         }
                         catch (Exception ex)
                         {
                             if (logging)
-                                Console.WriteLine(" [ERROR]");
+                            {
+                                //-- Uncomment this to log to console
+                                //Console.WriteLine(" [OK]");
+
+                                Trace.WriteLine(" [ERROR]");
+                            }
 
                             throw ex;
                         }
@@ -129,7 +165,12 @@ namespace BufferCopyNetStandard
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                //-- Uncomment this to log to console
+                //Console.WriteLine(ex);
+
+                Trace.WriteLine(ex);
+
+                throw ex;
             }
         }
 
