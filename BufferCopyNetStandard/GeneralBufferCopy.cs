@@ -26,6 +26,7 @@ namespace BufferCopyNetStandard
                         buffer[currentIndex++] = sourceBuffer[index];
 
                     }
+                    bufferItem.Buffer = buffer;
 
                     if (logging)
                     {

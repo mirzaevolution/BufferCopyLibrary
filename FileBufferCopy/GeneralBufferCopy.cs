@@ -26,7 +26,7 @@ namespace BufferCopyCore
                         buffer[currentIndex++] = sourceBuffer[index];
                         
                     }
-                    
+                    bufferItem.Buffer = buffer;
                     if (logging)
                     {
                         //-- Uncomment this to log to console
