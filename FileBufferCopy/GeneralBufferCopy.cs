@@ -5,7 +5,7 @@ namespace BufferCopyCore
 {
     public class GeneralBufferCopy
     {
-        public void CopyData(byte[] sourceBuffer, long bufferSize, Action<BufferItem> saveCallback, bool logging = false)
+        public void CopyData(byte[] sourceBuffer, long bufferSize, Action<BufferItem> saveCallback, Action completeCallback = null, bool logging = false)
         {
             try
             {
@@ -24,9 +24,10 @@ namespace BufferCopyCore
                     for (; index < bytesRead; index++)
                     {
                         buffer[currentIndex++] = sourceBuffer[index];
-                        
+
                     }
                     bufferItem.Buffer = buffer;
+
                     if (logging)
                     {
                         //-- Uncomment this to log to console
@@ -70,6 +71,7 @@ namespace BufferCopyCore
                     }
 
                 } while (index < sourceSize);
+                completeCallback?.Invoke();
             }
             catch (Exception ex)
             {

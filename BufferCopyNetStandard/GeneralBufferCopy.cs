@@ -5,7 +5,7 @@ namespace BufferCopyNetStandard
 {
     public class GeneralBufferCopy
     {
-        public void CopyData(byte[] sourceBuffer, long bufferSize, Action<BufferItem> saveCallback, bool logging = false)
+        public void CopyData(byte[] sourceBuffer, long bufferSize, Action<BufferItem> saveCallback, Action completeCallback = null, bool logging = false)
         {
             try
             {
@@ -71,6 +71,7 @@ namespace BufferCopyNetStandard
                     }
 
                 } while (index < sourceSize);
+                completeCallback?.Invoke();
             }
             catch (Exception ex)
             {
